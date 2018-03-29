@@ -1,6 +1,9 @@
+{% from "nginx/map.jinja" import nginx with context %}
+
 nginx_configuration:
   file.managed:
-    - name: /etc/nginx/nginx.conf
-    - source: salt://nginx/config/nginx.conf
+    - name: {{ nginx.configfile }}
+    - source: {{ nginx.configsource }}
+    - template: jinja
     - require:
-      - pkg: nginx
+      - pkg: {{ nginx.package }}

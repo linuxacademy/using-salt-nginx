@@ -1,0 +1,16 @@
+{% set nginx = salt['grains.filter_by']({
+   'Debian': {
+        'package': 'nginx',
+        'service': 'nginx',
+        'configfile': '/etc/nginx/nginx.conf',
+        'configsource': 'salt://nginx/config/debian-nginx.conf',
+        'user': 'www-data',
+    },
+    'RedHat': {
+        'package': 'nginx',
+        'service': 'nginx',
+        'configfile': '/etc/nginx/nginx.conf',
+        'configsource': 'salt://nginx/config/rh-nginx.conf',
+        'user': 'nginx',
+    },
+})%}
