@@ -1,3 +1,6 @@
+include:
+  - nginx.epel
+
 install_nginx:
   pkg.installed:
     - name: nginx
